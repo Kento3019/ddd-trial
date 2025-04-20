@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Form List</title>
+</head>
+<body>
+    <h1>Account Form List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Account Number</th>
+                <th>Balance</th>
+                <th>Amount</th>  <!-- Amount 列を追加 -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="account : ${accounts}">
+                <td th:text="${account.accountName}"></td>
+                <td th:text="${account.accountNumber}"></td>
+                <td th:text="${account.balance}"></td>
+                <td th:text="${account.amount}"></td> <!-- Amount を表示 -->
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Submit Account Form</h2>
+    <form action="/submitAccountForm" method="post" th:object="${accountForm}">
+        <label for="accountName">Account Name:</label>
+        <input type="text" id="accountName" name="accountName" th:field="*{accountName}" required>
+        <br>
+        <label for="accountNumber">Account Number:</label>
+        <input type="text" id="accountNumber" name="accountNumber" th:field="*{accountNumber}" required>
+        <br>
+        <label for="balance">Balance:</label>
+        <input type="text" id="balance" name="balance" th:field="*{balance}" required>
+        <br>
+        <label for="amount">Amount:</label>  <!-- Amount フィールドを追加 -->
+        <input type="number" id="amount" name="amount" th:field="*{amount}" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
