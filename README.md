@@ -7,8 +7,6 @@
 
 - Java 17  
 - Gradle  
-- JUnit 5  
-- Lombok  
 
 ## ▶️ 実行方法
 
